@@ -1,16 +1,17 @@
 Building steps:
 
-	1- Directly:
+1- Directly:
+	
+	gcc myFemtoShell.c
 
-		gcc myFemtoShell.c
 
+2-With intermediate files:
 
-	2-With intermediate files:m
+	gcc -E myFemtoShell.c > myFemtoShell.i
+	gcc -S myFemtoShell.i
+	gcc -C myFemtoShell.s
+	gcc -o myFemtoShell.out myFemtoShell.o
 
-		gcc -E myFemtoShell.c > myFemtoShell.i
-		gcc -S myFemtoShell.i
-		gcc -C myFemtoShell.s
-		gcc -o myFemtoShell.out myFemtoShell.o
 Example:
 
 	Type something > Hello my shell
