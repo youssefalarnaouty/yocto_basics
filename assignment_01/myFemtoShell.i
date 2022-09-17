@@ -1010,14 +1010,19 @@ extern char *stpncpy (char *__restrict __dest,
 # 6 "myFemtoShell.c"
 int main(){
         char input [200];
+        char terminator_message[] = "exit\n";
         while(1){
-                printf("Type a something > ");
-                gets(input);
-                if(0 == strcmp(input,"exit")){
+                printf("Type something > ");
+                fgets(input,200,
+# 11 "myFemtoShell.c" 3 4
+                               stdin
+# 11 "myFemtoShell.c"
+                                    );
+                if(0 == strcmp(input,terminator_message)){
                                 printf("Good Bye :)\n");
                                 break;
                                 }
-                printf("You said: %s\n",input);
+                printf("You said: %s",input);
         }
         return 0;
 }

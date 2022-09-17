@@ -2,13 +2,11 @@
 	.text
 	.section	.rodata
 .LC0:
-	.string	"Type a something > "
+	.string	"Type something > "
 .LC1:
-	.string	"exit"
-.LC2:
 	.string	"Good Bye :)"
-.LC3:
-	.string	"You said: %s\n"
+.LC2:
+	.string	"You said: %s"
 	.text
 	.globl	main
 	.type	main, @function
@@ -21,36 +19,40 @@ main:
 	.cfi_offset 6, -16
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
-	subq	$208, %rsp
+	subq	$224, %rsp
 	movq	%fs:40, %rax
 	movq	%rax, -8(%rbp)
 	xorl	%eax, %eax
+	movl	$1953069157, -214(%rbp)
+	movw	$10, -210(%rbp)
 .L4:
 	leaq	.LC0(%rip), %rdi
 	movl	$0, %eax
 	call	printf@PLT
+	movq	stdin(%rip), %rdx
 	leaq	-208(%rbp), %rax
+	movl	$200, %esi
 	movq	%rax, %rdi
-	movl	$0, %eax
-	call	gets@PLT
+	call	fgets@PLT
+	leaq	-214(%rbp), %rdx
 	leaq	-208(%rbp), %rax
-	leaq	.LC1(%rip), %rsi
+	movq	%rdx, %rsi
 	movq	%rax, %rdi
 	call	strcmp@PLT
 	testl	%eax, %eax
 	jne	.L2
-	leaq	.LC2(%rip), %rdi
+	leaq	.LC1(%rip), %rdi
 	call	puts@PLT
 	nop
 	movl	$0, %eax
-	movq	-8(%rbp), %rdx
-	xorq	%fs:40, %rdx
+	movq	-8(%rbp), %rcx
+	xorq	%fs:40, %rcx
 	je	.L6
 	jmp	.L7
 .L2:
 	leaq	-208(%rbp), %rax
 	movq	%rax, %rsi
-	leaq	.LC3(%rip), %rdi
+	leaq	.LC2(%rip), %rdi
 	movl	$0, %eax
 	call	printf@PLT
 	jmp	.L4
