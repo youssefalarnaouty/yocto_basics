@@ -1,13 +1,23 @@
-Compilation steps:
+Building steps:
 
-1- Directly:
+	1- Directly:
 
-	gcc myFemtoShell.c
+		gcc myFemtoShell.c
 
 
-2-With intermediate files:
+	2-With intermediate files:m
 
-	gcc -E myFemtoShell.c > myFemtoShell.i
-	gcc -S myFemtoShell.i
-	gcc -C myFemtoShell.s
-	gcc -o myFemtoShell.out myFemtoShell.o
+		gcc -E myFemtoShell.c > myFemtoShell.i
+		gcc -S myFemtoShell.i
+		gcc -C myFemtoShell.s
+		gcc -o myFemtoShell.out myFemtoShell.o
+Example:
+
+	Type something > Hello my shell
+	You said: Hello my shell
+	Type something > Are you ready
+	You said: Are you ready
+	Type something > one more time ??
+	You said: one more time ??
+	Type something > exit
+	Good Bye :)
