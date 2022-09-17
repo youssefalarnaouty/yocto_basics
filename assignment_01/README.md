@@ -1,6 +1,7 @@
 Compilation steps:
 
 1- Directly:
+
 	gcc myFemtoShell.c
 
 
